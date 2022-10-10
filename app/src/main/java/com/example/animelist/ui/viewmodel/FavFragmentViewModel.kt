@@ -1,8 +1,7 @@
 package com.example.animelist.ui.viewmodel
 
-import android.app.Application
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.animelist.base.BaseViewModel
 import com.example.animelist.data.Model
 import com.example.animelist.data.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -11,8 +10,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class FavFragmentViewModel @Inject constructor(application: Application,
-private val repository: Repository): BaseViewModel(application) {
+class FavFragmentViewModel @Inject constructor(
+private val repository: Repository): ViewModel() {
 
     fun getFav() = repository.getFav()
 

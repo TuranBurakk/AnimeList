@@ -12,8 +12,9 @@ import com.example.animelist.data.Model
 import com.example.animelist.databinding.FragmentDetailsBinding
 import com.example.animelist.ui.viewmodel.DetailsFragmentViewModel
 import com.example.animelist.utils.downloadFromUrl
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBinding::inflate) {
     private var id : String = ""
     private val viewModel by viewModels<DetailsFragmentViewModel>()

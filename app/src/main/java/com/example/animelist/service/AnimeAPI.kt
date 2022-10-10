@@ -9,5 +9,4 @@ interface AnimeAPI {
     @GET("/films")
     fun getAnime():Single<List<Model>>
 
-
 }

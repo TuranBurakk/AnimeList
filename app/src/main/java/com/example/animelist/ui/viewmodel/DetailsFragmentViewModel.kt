@@ -1,18 +1,21 @@
 package com.example.animelist.ui.viewmodel
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import com.example.animelist.base.BaseViewModel
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.animelist.data.Model
-import com.example.animelist.service.AnimeDatabase
+import com.example.animelist.service.AnimeDao
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class DetailsFragmentViewModel(application: Application): BaseViewModel(application) {
+@HiltViewModel
+class DetailsFragmentViewModel @Inject constructor(private val animeDao: AnimeDao) : ViewModel() {
     val animeLiveData = MutableLiveData<Model>()
     fun getDataFromRoom(id : String){
-        launch {
-            val dao = AnimeDatabase(getApplication()).animeDao()
-            val anime = dao.getAnime(id)
+        viewModelScope.launch {
+
+            val anime = animeDao.getAnime(id)
             animeLiveData.value = anime
         }
     }
