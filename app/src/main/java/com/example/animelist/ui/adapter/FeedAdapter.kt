@@ -9,8 +9,8 @@ import com.example.animelist.databinding.ItemRowBinding
 import com.example.animelist.ui.fragment.FeedFragmentDirections
 import com.example.animelist.utils.downloadFromUrl
 
-class FeedAdapter(val list : ArrayList<Model>) : RecyclerView.Adapter<FeedAdapter.AnimeHolder>() {
-
+class FeedAdapter() : RecyclerView.Adapter<FeedAdapter.AnimeHolder>() {
+            private var list = emptyList<Model>()
     class AnimeHolder(val binding : ItemRowBinding): RecyclerView.ViewHolder(binding.root) {
 
     }
@@ -34,8 +34,7 @@ class FeedAdapter(val list : ArrayList<Model>) : RecyclerView.Adapter<FeedAdapte
        return list.size
     }
     fun updateAnimeList(newList: List<Model>){
-        list.clear()
-        list.addAll(newList)
+        list = newList
         notifyDataSetChanged()
     }
 }

@@ -7,8 +7,6 @@ import com.example.animelist.data.Model
 
 @Dao
 interface AnimeDao {
-    @Insert
-    suspend fun insertAll(vararg animes: Model): List<Long>
 
     @Query("SELECT * FROM model")
     suspend fun getAllAnime(): List<Model>
@@ -18,4 +16,7 @@ interface AnimeDao {
 
     @Query("DELETE FROM model")
     suspend fun deleteAllAnime()
+    @Insert
+    suspend fun insertAll(vararg animes: Model): List<Long>
+
 }
