@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "model")
-data class Model(
+data class AnimeModel(
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo val id : String,
     @ColumnInfo val title : String?= null,

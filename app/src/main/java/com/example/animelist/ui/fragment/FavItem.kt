@@ -1,7 +1,7 @@
 package com.example.animelist.ui.fragment
 
-import com.example.animelist.data.Model
+import com.example.animelist.data.AnimeModel
 
 interface FavItem {
-    fun favItem(item:Model,position: Int)
+    fun favItem(item: AnimeModel, position: Int)
 }

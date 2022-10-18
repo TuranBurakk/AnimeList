@@ -1,16 +1,17 @@
 package com.example.animelist.ui.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.example.animelist.data.Model
+import com.example.animelist.data.AnimeModel
 import com.example.animelist.databinding.ItemRowBinding
 import com.example.animelist.ui.fragment.FeedFragmentDirections
 import com.example.animelist.utils.downloadFromUrl
 
 class FeedAdapter() : RecyclerView.Adapter<FeedAdapter.AnimeHolder>() {
-            private var list = emptyList<Model>()
+            private var list = emptyList<AnimeModel>()
     class AnimeHolder(val binding : ItemRowBinding): RecyclerView.ViewHolder(binding.root) {
 
     }
@@ -26,14 +27,15 @@ class FeedAdapter() : RecyclerView.Adapter<FeedAdapter.AnimeHolder>() {
         holder.binding.imageView.downloadFromUrl(list[position].image)
         val id = list[position].id
         holder.binding.root.setOnClickListener {
-            Navigation.findNavController(it).navigate(FeedFragmentDirections.actionFeedFragmentToDetailsFragment(id!!))
+            Navigation.findNavController(it).navigate(FeedFragmentDirections.actionFeedFragmentToDetailsFragment(id))
         }
     }
 
     override fun getItemCount(): Int {
        return list.size
     }
-    fun updateAnimeList(newList: List<Model>){
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateAnimeList(newList: List<AnimeModel>){
         list = newList
         notifyDataSetChanged()
     }

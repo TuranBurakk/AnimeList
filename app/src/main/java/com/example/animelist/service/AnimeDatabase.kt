@@ -4,9 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.animelist.data.Model
+import com.example.animelist.data.AnimeModel
 
-@Database(entities = [Model::class], version = 1)
+@Database(entities = [AnimeModel::class], version = 1)
 abstract class AnimeDatabase : RoomDatabase() {
 
     abstract fun animeDao() : AnimeDao

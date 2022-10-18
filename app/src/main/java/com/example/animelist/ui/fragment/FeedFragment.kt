@@ -6,7 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import com.example.animelist.base.BaseFragment
-import com.example.animelist.data.Model
+import com.example.animelist.data.AnimeModel
 import com.example.animelist.databinding.FragmentFeedBinding
 import com.example.animelist.ui.adapter.FeedAdapter
 import com.example.animelist.ui.viewmodel.FeedFragmentViewModel
@@ -18,22 +18,18 @@ class FeedFragment : BaseFragment<FragmentFeedBinding>(FragmentFeedBinding::infl
 
     private val viewModel : FeedFragmentViewModel by viewModels()
     private val adapter by lazy { FeedAdapter() }
-    private val animelist = arrayListOf<Model>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getDataFromAPI()
         binding.animeRecyclerView.adapter = adapter
         getAnimes()
-        adapter.updateAnimeList(animelist)
     }
-
 
     private fun getAnimes(){
         viewModel.getDataFromAPI().observe(viewLifecycleOwner){response ->
             when(response.status){
                 Resource.Status.SUCCESS ->{
-                    animelist.addAll((response.data ?: arrayListOf(animelist)) as Collection<Model>)
+                    adapter.updateAnimeList((response.data!!))
                 }
                 Resource.Status.ERROR ->{
                     showDialog(requireContext(), message = "${response.message}")  }
@@ -55,7 +51,7 @@ class FeedFragment : BaseFragment<FragmentFeedBinding>(FragmentFeedBinding::infl
         }.show()
     }
 
-    override fun favItem(item: Model, position: Int) {
+    override fun favItem(item: AnimeModel, position: Int) {
 
     }
 

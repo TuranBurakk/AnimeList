@@ -1,14 +1,9 @@
 package com.example.animelist.ui.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import com.example.animelist.base.BaseFragment
-import com.example.animelist.data.Model
 import com.example.animelist.databinding.FragmentDetailsBinding
 import com.example.animelist.ui.viewmodel.DetailsFragmentViewModel
 import com.example.animelist.utils.downloadFromUrl
@@ -31,14 +26,14 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBind
 
 
     private fun observerLiveData(){
-        viewModel.animeLiveData.observe(viewLifecycleOwner, Observer { model ->
+        viewModel.animeLiveData.observe(viewLifecycleOwner) { model ->
             model?.let {
                 binding.DetailsTV.text = model.description
                 context?.let {
                     binding.imageView2.downloadFromUrl(model.movieBanner)
                 }
             }
-        })
+        }
     }
 
 }
