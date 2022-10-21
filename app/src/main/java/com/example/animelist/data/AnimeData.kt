@@ -8,8 +8,8 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-@Entity(tableName = "model")
-data class AnimeModel(
+@Entity(tableName = "favmodel")
+data class AnimeData(
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo val id : String,
     @ColumnInfo val title : String?= null,

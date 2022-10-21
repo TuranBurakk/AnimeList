@@ -2,6 +2,7 @@ package com.example.animelist.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.animelist.data.AnimeData
 import com.example.animelist.data.AnimeModel
 import com.example.animelist.data.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel

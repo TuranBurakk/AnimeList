@@ -1,5 +1,6 @@
 package com.example.animelist.service
 
+import com.example.animelist.data.AnimeData
 import com.example.animelist.data.AnimeModel
 import retrofit2.Response
 import retrofit2.http.GET
