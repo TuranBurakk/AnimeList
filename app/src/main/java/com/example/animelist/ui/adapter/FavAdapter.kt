@@ -14,7 +14,7 @@ import com.example.animelist.ui.fragment.FavFragmentDirections
 import com.example.animelist.ui.fragment.FavItem
 import com.example.animelist.utils.downloadFromUrl
 
-class FavAdapter(private var listener: FavItem? = null): RecyclerView.Adapter<FavAdapter.FavHolder>() {
+class FavAdapter(private var listener : FavItem? = null): RecyclerView.Adapter<FavAdapter.FavHolder>() {
 
     var favList = emptyList<AnimeModel>()
 
@@ -50,9 +50,10 @@ class FavAdapter(private var listener: FavItem? = null): RecyclerView.Adapter<Fa
         favList = newList
         notifyDataSetChanged()
     }
-    fun unFav(position: Int){
+    fun unFavorite(position: Int) {
         listener?.let {
             listener?.favItem(favList[position], position)
         }
     }
+
 }

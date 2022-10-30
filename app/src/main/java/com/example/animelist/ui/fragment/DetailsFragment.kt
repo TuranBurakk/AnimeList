@@ -27,8 +27,8 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBind
         setFavoriteButton()
     }
     private fun getAnimeDetail() {
-        args.id.id.let {
-            viewModel.getDataFromRoom(it)
+        args.curentItem.id.let {
+            viewModel.getDataDetails(it)
                 .observe(viewLifecycleOwner) { response ->
                     when (response.status) {
                         Resource.Status.SUCCESS -> {
@@ -53,10 +53,10 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBind
         }
         btnFavorite.setOnClickListener {
             if (isInFavorite()) {
-                viewModel.deleteFromFavorites(args.id)
+                viewModel.deleteFromFavorites(args.curentItem)
                 btnFavorite.setImageResource(R.drawable.ic_baseline_favorite_border_24)
             }else{
-                viewModel.addToFavorites(args.id)
+                viewModel.addToFavorites(args.curentItem)
                 btnFavorite.setImageResource(R.drawable.ic_baseline_favorite_24)
             }
         }
@@ -64,7 +64,7 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBind
     private fun isInFavorite(): Boolean {
         var isFavorite = false
         for (favorite in viewModel.getFavorites()){
-            if (favorite.id == args.id.id){
+            if (favorite.id == args.curentItem.id){
                 isFavorite = true
             }
         }

@@ -1,12 +1,9 @@
 package com.example.animelist.ui.fragment
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import com.example.animelist.base.BaseFragment
-import com.example.animelist.data.AnimeData
 import com.example.animelist.data.AnimeModel
 import com.example.animelist.databinding.FragmentFeedBinding
 import com.example.animelist.ui.adapter.FeedAdapter
@@ -25,8 +22,12 @@ class FeedFragment : BaseFragment<FragmentFeedBinding>(FragmentFeedBinding::infl
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.animeRecyclerView.adapter = adapter
-        getAnimes()
+    }
 
+    override fun onResume() {
+        super.onResume()
+        animeList.clear()
+        getAnimes()
     }
 
     private fun getAnimes(){

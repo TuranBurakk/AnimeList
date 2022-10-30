@@ -16,7 +16,7 @@ import javax.inject.Inject
 class DetailsFragmentViewModel @Inject constructor(
     private val repository: Repository
 ) : ViewModel() {
-    fun getDataFromRoom(id : String) : LiveData<Resource<AnimeModel>>{
+    fun getDataDetails(id : String) : LiveData<Resource<AnimeModel>>{
         return repository.getdetails(id)
     }
     fun getFavorites() = repository.getFav()

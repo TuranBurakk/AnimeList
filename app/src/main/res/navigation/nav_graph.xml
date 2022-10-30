@@ -20,7 +20,7 @@
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" >
         <argument
-            android:name="id"
+            android:name="curentItem"
             app:argType="com.example.animelist.data.AnimeModel" />
     </fragment>
     <fragment

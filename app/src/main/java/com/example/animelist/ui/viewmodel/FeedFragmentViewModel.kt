@@ -15,6 +15,7 @@ import javax.inject.Inject
 class FeedFragmentViewModel @Inject constructor(
     private val repository: Repository) : ViewModel(){
 
+
     fun getDataFromAPI(): LiveData<Resource<List<AnimeModel>>> {
      return repository.getAnimes()
     }

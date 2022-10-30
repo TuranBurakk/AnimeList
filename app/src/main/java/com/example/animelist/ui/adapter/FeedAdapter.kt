@@ -34,20 +34,19 @@ class FeedAdapter(private var listener: FavItem? = null) :
         holder.binding.nameTv.text = anime.title
         holder.binding.scoreTv.text = anime.rtScore
         holder.binding.imageView.downloadFromUrl(anime.image)
-        val id = list[position]
         holder.binding.root.setOnClickListener {
             Navigation.findNavController(it)
-                .navigate(FeedFragmentDirections.actionFeedFragmentToDetailsFragment(id))
+                .navigate(FeedFragmentDirections.actionFeedFragmentToDetailsFragment(anime))
         }
         holder.binding.root.animation = AnimationUtils.loadAnimation(
             holder.binding.root.context,
             R.anim.transition_vertical
         )
         holder.binding.imgFav.setOnClickListener {
-            list[position].isFavorite = !anime.isFavorite
+           anime.isFavorite = !anime.isFavorite
             resource = checkFavorite(anime.isFavorite)
             changeFavoriteImage(holder.binding.imgFav, resource)
-            listener?.favItem(list[position], position)
+            listener?.favItem(anime, position)
         }
     }
 
@@ -55,7 +54,7 @@ class FeedAdapter(private var listener: FavItem? = null) :
 
     private fun checkFavorite(isFavorite: Boolean): Int {
         return when (isFavorite) {
-            true -> R.drawable.ic_baseline_favorite_border
+            true -> R.drawable.ic_baseline_favorite_24
             false -> R.drawable.ic_baseline_favorite_border_24
         }
     }
