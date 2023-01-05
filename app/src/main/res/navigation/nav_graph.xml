@@ -13,9 +13,6 @@
         <action
             android:id="@+id/action_feedFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
-        <action
-            android:id="@+id/action_feedFragment_to_favFragment"
-            app:destination="@id/favFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -23,9 +20,8 @@
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" >
         <argument
-            android:name="id"
-            app:argType="string"
-            android:defaultValue="null" />
+            android:name="curentItem"
+            app:argType="com.example.animelist.data.AnimeModel" />
     </fragment>
     <fragment
         android:id="@+id/favFragment"

@@ -13,12 +13,12 @@ class Repository @Inject constructor(
         remoteDataSource.getAnime()
     }
     fun getdetails(id : String) = performNetworkOperation {
-        remoteDataSource.getDetails()
+        remoteDataSource.getDetails(id)
     }
 
     fun getFav()= localDataSource.getFavorites()
 
-    suspend fun addToFavorites(animes : Model) = localDataSource.addToFav(animes)
+    suspend fun addToFavorites(animes : AnimeModel) = localDataSource.addToFav(animes)
 
-    suspend fun deleteFromFavorites(animes : Model) = localDataSource.deleteFromFav(animes)
+    suspend fun deleteFromFavorites(animes : AnimeModel) = localDataSource.deleteFromFav(animes)
 }
